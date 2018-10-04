@@ -1,0 +1,70 @@
+animations {
+  id: "bat"
+  images {
+    image: "/assets/environment/bat/tile000.png"
+  }
+  images {
+    image: "/assets/environment/bat/tile001.png"
+  }
+  images {
+    image: "/assets/environment/bat/tile002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "ghost"
+  images {
+    image: "/assets/environment/ghost/tile000.png"
+  }
+  images {
+    image: "/assets/environment/ghost/tile001.png"
+  }
+  images {
+    image: "/assets/environment/ghost/tile002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "frog"
+  images {
+    image: "/assets/environment/frog/tile000.png"
+  }
+  images {
+    image: "/assets/environment/frog/tile001.png"
+  }
+  images {
+    image: "/assets/environment/frog/tile002.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "skeleton"
+  images {
+    image: "/assets/environment/skeleton/tile000.png"
+  }
+  images {
+    image: "/assets/environment/skeleton/tile001.png"
+  }
+  images {
+    image: "/assets/environment/skeleton/tile002.png"
+  }
+  images {
+    image: "/assets/environment/skeleton/tile003.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 6
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0
