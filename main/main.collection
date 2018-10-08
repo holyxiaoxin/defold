@@ -3,8 +3,8 @@ instances {
   id: "bat"
   prototype: "/main/bat.go"
   position {
-    x: 353.0
-    y: 220.0
+    x: 272.0
+    y: 208.0
     z: 0.0
   }
   rotation {
@@ -14,8 +14,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 3.0
-    y: 3.0
+    x: 2.0
+    y: 2.0
     z: 1.0
   }
 }
@@ -23,8 +23,8 @@ instances {
   id: "ghost"
   prototype: "/main/ghost.go"
   position {
-    x: 350.0
-    y: 827.0
+    x: 304.0
+    y: 800.0
     z: 0.0
   }
   rotation {
@@ -34,14 +34,14 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 3.0
-    y: 3.0
+    x: 2.0
+    y: 2.0
     z: 1.0
   }
 }
 scale_along_z: 0
 embedded_instances {
-  id: "go"
+  id: "main"
   data: "components {\n"
   "  id: \"main\"\n"
   "  component: \"/main/main.script\"\n"
@@ -59,7 +59,7 @@ embedded_instances {
   "}\n"
   "components {\n"
   "  id: \"map\"\n"
-  "  component: \"/main/map.tilemap\"\n"
+  "  component: \"/main/map_henry.tilemap\"\n"
   "  position {\n"
   "    x: -320.0\n"
   "    y: -568.0\n"
