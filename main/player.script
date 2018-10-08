@@ -1,0 +1,39 @@
+local colyseus = require("scripts.colyseus")
+
+-- local speed = 150
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.dir = vmath.vector3()
+	self.myNextDir = go.get_position()
+	self.oppNextDir = go.get_position('ghost')
+
+	self.client, self.room = colyseus.start(self, go)
+end
+
+function update(self, dt)
+	self.client:loop()
+
+	-- Add update code here
+	-- Remove this function if not needed
+	-- if vmath.length_sqr(self.dir) > 1 then
+	-- 	self.dir = vmath.normalize(self.dir)
+	-- end
+	--
+	-- local p = go.get_position()
+	-- go.set_position(p + self.dir * speed * dt)
+	--
+	-- self.dir = vmath.vector3()
+	go.set_position(self.myNextDir)
+	go.set_position(self.oppNextDir, 'ghost')
+end
+
+function on_input(self, action_id, action)
+
+	if action_id == hash("touch")  and action.pressed then
+		local p = go.get_position()
+
+		self.room:send(tostring(action.x) .. '_' .. tostring(action.y))
+	end
+
+end

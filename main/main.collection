@@ -1,10 +1,10 @@
 name: "main"
 instances {
-  id: "bat"
-  prototype: "/main/bat.go"
+  id: "ghost"
+  prototype: "/main/ghost.go"
   position {
-    x: 272.0
-    y: 208.0
+    x: 400.0
+    y: 896.0
     z: 0.0
   }
   rotation {
@@ -20,11 +20,11 @@ instances {
   }
 }
 instances {
-  id: "ghost"
-  prototype: "/main/ghost.go"
+  id: "bat1"
+  prototype: "/main/bat.go"
   position {
-    x: 304.0
-    y: 800.0
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -34,8 +34,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -43,21 +43,6 @@ scale_along_z: 0
 embedded_instances {
   id: "main"
   data: "components {\n"
-  "  id: \"main\"\n"
-  "  component: \"/main/main.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "components {\n"
   "  id: \"map\"\n"
   "  component: \"/main/map_henry.tilemap\"\n"
   "  position {\n"
@@ -87,6 +72,42 @@ embedded_instances {
   scale3 {
     x: 1.0
     y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "bat"
+  children: "bat1"
+  data: "components {\n"
+  "  id: \"player\"\n"
+  "  component: \"/main/player.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 240.0
+    y: 240.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
     z: 1.0
   }
 }
