@@ -20,7 +20,7 @@ local function start (self, go)
   room = client:join("common")
 
   -- listen for changes on a path on the state
-  room:listen("players/:id/:attribute", function(change)
+  room:listen("players/:id/position/:attribute", function(change)
     updates = updates + 1
     if (updates/60 % 1) == 0 then
       print(updates/60) -- track update rate
