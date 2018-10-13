@@ -14,7 +14,8 @@ local screen_y = 1136
 
 local function start (self, go)
   client = colyseus_client.new("ws://128.199.80.90:2657")
-  room = client:join("chat")
+  -- client = colyseus_client.new("ws://localhost:2657")
+  room = client:join("common")
 
   -- listen for changes on a path on the state
   room:listen("players/:id/:attribute", function(change)
