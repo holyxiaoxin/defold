@@ -12,6 +12,8 @@ local Module = {}
 local screen_x = 640
 local screen_y = 1136
 
+local updates = 0 -- debugging
+
 local function start (self, go)
   client = colyseus_client.new("ws://128.199.80.90:2657")
   -- client = colyseus_client.new("ws://localhost:2657")
@@ -19,6 +21,11 @@ local function start (self, go)
 
   -- listen for changes on a path on the state
   room:listen("players/:id/:attribute", function(change)
+    updates = updates + 1
+    if (updates/60 % 1) == 0 then
+      print(updates/60) -- track update rate
+    end
+
     -- print(change.operation)
     -- print(change.path.id)
     -- print(change.path.attribute)
@@ -36,7 +43,7 @@ local function start (self, go)
         self.myNextDir.y = change.value
       end
 
-      print(self.myNextDir)
+      -- print(self.myNextDir)
     else
 
       if change.path.attribute == 'x' then
@@ -45,7 +52,7 @@ local function start (self, go)
         self.oppNextDir.y = screen_y - change.value
       end
 
-      print(self.oppNextDir)
+      -- print(self.oppNextDir)
     end
 
   end)
