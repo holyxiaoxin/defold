@@ -4,13 +4,12 @@
 -- in any script using the functions.
 
 local colyseus_client = require "colyseus.client"
+local config = require "scripts.config"
+
 local client
 local room
 
 local Module = {}
-
-local screen_x = 640
-local screen_y = 1136
 
 local updates = 0 -- debugging
 
@@ -47,12 +46,31 @@ local function start (self, go)
     else
 
       if change.path.attribute == 'x' then
-        self.oppNextDir.x = screen_x - change.value
+        self.oppNextDir.x = config.screen_x - change.value
       elseif change.path.attribute == 'y' then
-        self.oppNextDir.y = screen_y - change.value
+        self.oppNextDir.y = config.screen_y - change.value
       end
 
       -- print(self.oppNextDir)
+    end
+
+  end)
+
+  room:listen("actions/data/" .. client.id .. "/:index", function(change)
+    print('data')
+    local action = change.value
+    if change.operation ~= 'remove' then
+      if client.id == action.from then
+        action.position = {
+          x = config.screen_x - action.position.x,
+          y = config.screen_y - action.position.y
+        }
+      end
+      table.insert(self.actions, action)
+      room:send({
+          type = 'clear_action',
+          uuid = action.uuid
+        })
     end
 
   end)

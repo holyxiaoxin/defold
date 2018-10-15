@@ -1,5 +1,5 @@
 embedded_components {
-  id: "sprite"
+  id: "skeleton"
   type: "sprite"
   data: "tile_set: \"/main/character.atlas\"\n"
   "default_animation: \"skeleton\"\n"

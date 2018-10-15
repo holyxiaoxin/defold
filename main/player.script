@@ -1,12 +1,12 @@
-local colyseus = require("scripts.colyseus")
-
--- local speed = 150
+local colyseus = require "scripts.colyseus"
+local config = require "scripts.config"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.dir = vmath.vector3()
 	self.myNextDir = go.get_position()
 	self.oppNextDir = go.get_position('ghost')
+	self.actions = {}
 
 	self.client, self.room = colyseus.start(self, go)
 end
@@ -14,26 +14,41 @@ end
 function update(self, dt)
 	self.client:loop()
 
-	-- Add update code here
-	-- Remove this function if not needed
-	-- if vmath.length_sqr(self.dir) > 1 then
-	-- 	self.dir = vmath.normalize(self.dir)
-	-- end
-	--
-	-- local p = go.get_position()
-	-- go.set_position(p + self.dir * speed * dt)
-	--
-	-- self.dir = vmath.vector3()
 	go.set_position(self.myNextDir)
 	go.set_position(self.oppNextDir, 'ghost')
+
+	if #self.actions > 0 then
+		for i, action in pairs(self.actions) do
+	    local action = table.remove(self.actions, i)
+			local position = vmath.vector3(action.position.x, action.position.y, 0.1)
+			-- local scale = 0.66
+			local scale = 2
+			factory.create("/spells#spellblockfactory", position, nil, nil, scale)
+	  end
+	end
 end
 
 function on_input(self, action_id, action)
 
-	if action_id == hash("touch")  and action.pressed then
-		local p = go.get_position()
+	if action_id == hash("touch") and action.pressed then
+		-- local p = go.get_position()
+		local move_player = action.y <= 544
+		local attack_player = action.y > 592
 
-		self.room:send(tostring(action.x) .. '_' .. tostring(action.y))
+		if move_player then -- bottom half of screen
+			self.room:send({
+				type = 'move_player',
+				position = { x = action.x, y = action.y }
+			})
+		elseif attack_player then -- top half of screen
+			self.room:send({
+				type = 'attack_player',
+				position = {
+					x = config.screen_x - action.x,
+					y = config.screen_y - action.y,
+				}
+			})
+		end
 	end
 
 end

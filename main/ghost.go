@@ -1,5 +1,5 @@
 embedded_components {
-  id: "sprite"
+  id: "ghost"
   type: "sprite"
   data: "tile_set: \"/main/character.atlas\"\n"
   "default_animation: \"ghost\"\n"

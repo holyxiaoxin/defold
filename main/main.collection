@@ -1,10 +1,10 @@
 name: "main"
 instances {
-  id: "ghost"
-  prototype: "/main/ghost.go"
+  id: "bat1"
+  prototype: "/main/bat.go"
   position {
-    x: 400.0
-    y: 896.0
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -14,14 +14,14 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
 instances {
-  id: "bat1"
-  prototype: "/main/bat.go"
+  id: "ghost1"
+  prototype: "/main/ghost.go"
   position {
     x: 0.0
     y: 0.0
@@ -46,9 +46,9 @@ embedded_instances {
   "  id: \"map\"\n"
   "  component: \"/main/map_henry.tilemap\"\n"
   "  position {\n"
-  "    x: -320.0\n"
-  "    y: -568.0\n"
-  "    z: -1.0\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"
@@ -59,9 +59,9 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 320.0
-    y: 568.0
-    z: 0.0
+    x: 0.0
+    y: 0.0
+    z: -1.0
   }
   rotation {
     x: 0.0
@@ -108,6 +108,65 @@ embedded_instances {
   scale3 {
     x: 2.0
     y: 2.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "ghost"
+  children: "ghost1"
+  data: ""
+  position {
+    x: 400.0
+    y: 896.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "spells"
+  data: "embedded_components {\n"
+  "  id: \"spellblockfactory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/block.go\\\"\\n"
+  "load_dynamically: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: -16.0
+    y: -16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
