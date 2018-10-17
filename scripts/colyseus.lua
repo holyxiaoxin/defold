@@ -16,6 +16,7 @@ local updates = 0 -- debugging
 local function start (self, go)
   client = colyseus_client.new("ws://128.199.80.90:2657")
   -- client = colyseus_client.new("ws://localhost:2657")
+
   room = client:join("common")
 
   -- listen for changes on a path on the state
@@ -57,7 +58,6 @@ local function start (self, go)
   end)
 
   room:listen("actions/data/" .. client.id .. "/:index", function(change)
-    print('data')
     local action = change.value
     if change.operation ~= 'remove' then
       if client.id == action.from then
